@@ -25,6 +25,6 @@ def read_json(f_name):
 
 def get_readme_path(root):
     for file in Path(root).glob('*'):
-        if file.is_file() and file.parts[0].lower() == "readme.md":
+        if file.is_file() and file.parts[-1].lower() == "readme.md":
             break
     return file
