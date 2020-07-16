@@ -1,1 +1,1 @@
-# my-hello-world-action
+# The pre-release check action
