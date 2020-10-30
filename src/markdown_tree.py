@@ -8,9 +8,9 @@ import logging
 import src.utils as utils
 
 
-def paser(f_path: Path, show: bool=False):
+def parse(f_path: Path, show: bool=False):
     """
-    Given a markdown file path to paser a doc tree
+    Given a markdown file path to parse a doc tree
     The file's hierarchy is determined by heading hierarchy.
     eg. `# `, `## ` and `### ` etc
     """

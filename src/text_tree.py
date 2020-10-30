@@ -57,7 +57,7 @@ def find_level(line):
     return level
 
 
-def paser(readme_tree, readme_path, show=False):
+def parse(readme_tree, readme_path, show=False):
     """
     Given a readme tree to subtract the project contents section and 
     convert it to a tree structure

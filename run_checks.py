@@ -7,21 +7,21 @@ from src import folder_tree, markdown_tree, text_tree, syntax_checker, utils
 
 
 def main(config):
-    matser_folder_tree = folder_tree.paser(Path("master"), config, level=5)
+    matser_folder_tree = folder_tree.parse(Path("master"), config, level=5)
     matser_folder_tree.show()
 
-    template_folder_tree = folder_tree.paser(Path("template"), config, level=5)
+    template_folder_tree = folder_tree.parse(Path("template"), config, level=5)
     
     folder_tree.scan_empty_dirs(matser_folder_tree)
     folder_tree.scan_holdover_items(matser_folder_tree, template_folder_tree)
     
-    matser_readme_tree = markdown_tree.paser(utils.get_readme_path('master'))
-    template_readme_tree = markdown_tree.paser(utils.get_readme_path('template'))
+    matser_readme_tree = markdown_tree.parse(utils.get_readme_path('master'))
+    template_readme_tree = markdown_tree.parse(utils.get_readme_path('template'))
     markdown_tree.check_readme(matser_readme_tree, template_readme_tree, config)
 
     # Check unrsolved to~do tags and commented code
     syntax_checker.check_syntax(Path("master"), config)
-    matser_readme_folder_tree = text_tree.paser(
+    matser_readme_folder_tree = text_tree.parse(
         matser_readme_tree, utils.get_readme_path('master'))
 
     text_tree.check_project_content(

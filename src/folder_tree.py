@@ -16,7 +16,7 @@ def tree_clean_up(contents: list, exclude_filenames: list, exclude_paths: list):
     return sorted(contents)
 
 
-def paser(
+def parse(
     dir_path: Path, config : dict, 
     level: int=-1, limit_to_directories: bool=False,
     ):
