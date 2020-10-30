@@ -9,9 +9,15 @@ def load_file(f_path):
     except:
         return []
 
-def find_pattern(f_path, prog):
+def find_pattern(f_path, prog, skip_header=False):
     matches = []
+    file_header = True if skip_header else False
     for i, line in enumerate(load_file(f_path), 1):
+        if file_header and line.startswith("#"):
+            continue
+        else: 
+            file_header = False
+
         if prog.match(line.lower()):
             matches.append((i, line))
     return matches
@@ -35,7 +41,7 @@ def find_commented_code(root_path):
     prog_commented_code = re.compile(r'\#+\s+.*[\+|\-|\*|\/|\(|\=].*')
     commented_code_dict = {}
     for file in file_list:
-        commendted_code = find_pattern(file, prog_commented_code)
+        commendted_code = find_pattern(file, prog_commented_code, True)
         if commendted_code and len(commendted_code)>0:
             commented_code_dict[str(file)] = commendted_code
     return commented_code_dict
