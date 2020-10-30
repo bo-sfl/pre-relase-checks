@@ -48,10 +48,10 @@ def check_syntax(root_path, config):
             logging.error(f"Find Unresolved todo at {msg}")
 
     commendted_code = find_commented_code(root_path)
-    igore_special_lines = set(config['commented_code']['special_lines'])
+    ignore_special_lines = set(config['commented_code']['special_lines'])
     for path, lines in commendted_code.items():
         for line in lines:
-            if line[1] in igore_special_lines:
+            if line[1] in ignore_special_lines:
                 pass
             else:
                 msg = f"{path}: L{line[0]} {line[1]} "

@@ -19,7 +19,7 @@ def main(config):
     template_readme_tree = markdown_tree.parse(utils.get_readme_path('template'))
     markdown_tree.check_readme(matser_readme_tree, template_readme_tree, config)
 
-    # Check unrsolved to~do tags and commented code
+    # Check unresolved to~do tags and commented code
     syntax_checker.check_syntax(Path("master"), config)
     matser_readme_folder_tree = text_tree.parse(
         matser_readme_tree, utils.get_readme_path('master'))
