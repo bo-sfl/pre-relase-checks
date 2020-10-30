@@ -163,7 +163,7 @@ def check_readme(master_readme, template_readme, config):
             logging.error(f"Missing a mandatory line in README.md: L{i} :{line}")
 
     # Check duplicate texts
-    template_text = line_texts(list(master_readme.filter_nodes(is_text)))
+    template_text = line_texts(list(template_readme.filter_nodes(is_text)))
     ignore_lines = utils.parser_line_no(config['readme']['ignore_lines'])
     reduce_template_text = {i:line for i, line in template_text.items() if i not in ignore_lines}
     for i, line in master_text.items():

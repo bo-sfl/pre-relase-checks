@@ -74,7 +74,7 @@ def parse(readme_tree, readme_path, show=False):
     if max_level == 0 :
         raise ValueError("""Failed to parser the Project Content section, \
                 please follow the template's format""")
-    
+
     # Build tree
     dir_tree = tree.Tree()
     root_line_no = contents[0][0]-1
@@ -83,13 +83,12 @@ def parse(readme_tree, readme_path, show=False):
     last_active_lines = [root_line_no] * (max_level + 1)
     last_active_level = 0
     for line_no, level, line in contents:
-
+        parent_level = level-1
+        last_active_lines[level] = line_no
         if level>=last_active_level:
-            last_active_lines[level] = line_no
             last_active_level = level -1 
-            parent_level = last_active_level
+
         else:
-            parent_level = last_active_level
             last_active_level = level
 
         node_data = Node_data(line)
