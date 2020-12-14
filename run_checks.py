@@ -34,10 +34,14 @@ if __name__ == "__main__":
     logging.basicConfig(filename=LOG_FILENAME,level=logging.WARNING)
     
     try:
-        import sys
-        sys.path.append("master/.github")
+        import os, sys
+        if os.path.isfile("master/.github/custom/pre_release_config.py"):
+            sys.path.append("master/.github/custom")
+            print("Using the config in .github/custom/pre_release_config.py from the repo")
+        else:
+            sys.path.append("master/.github/defaults")
+            print("Using the config in .github/defaults/pre_release_config.py from the repo")
         from pre_release_config import CONFIG
-        print("Using the config in .github/pre_release_config.py from the repo")
     except:
         from config import CONFIG
         print("Failed to load the config file from repo")
