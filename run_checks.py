@@ -39,8 +39,8 @@ if __name__ == "__main__":
             sys.path.append("master/.github/custom")
             print("Using the config in .github/custom/pre_release_config.py from the repo")
         else:
-            sys.path.append("master/.github/defaults")
-            print("Using the config in .github/defaults/pre_release_config.py from the repo")
+            sys.path.append("master/.github/default")
+            print("Using the config in .github/default/pre_release_config.py from the repo")
         from pre_release_config import CONFIG
     except:
         from config import CONFIG
