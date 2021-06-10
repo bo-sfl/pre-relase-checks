@@ -31,7 +31,8 @@ def subtract_project_contents_section(readme_tree, readme_path):
         if node.data.clean_text.lower() == "Project Contents".lower():
             contents_root = node
             break
-
+    if not contents_root:
+        raise ValueError("Failed to find the project content tree in readme.")
     line_numbers  = sorted([node.identifier for node in 
         readme_tree.subtree(contents_root.identifier).all_nodes()])
 
